@@ -48,8 +48,8 @@ def main(argv):
         record['fundsCode'] = trans.data['funds_code']
         record['status'] = trans.data['status']
         if 'transaction_reference' in trans.data:
-            record['transactionReference'] = trans.data['transaction_reference']
-        record['transactionDetails'] = trans.data['transaction_details']
+            record['reference'] = trans.data['transaction_reference']
+        record['details'] = trans.data['transaction_details']
         record['extraDetails'] = trans.data['extra_details']
         result.append(record)
 

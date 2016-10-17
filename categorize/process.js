@@ -37,10 +37,12 @@ for (let trans of data.transactions) {
             break;
         }
     }
+    /*
     if (cat == categories.UNCLEAR) {
         console.log(cat);
         console.log(trans.details);
     }
+    */
 }
 console.log('matched: ' + matched + '/' + data.transactions.length);
 

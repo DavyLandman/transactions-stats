@@ -7,5 +7,9 @@ module.exports = {
     INTERNET: "XS4All Internet",
     AUTOVERZEKERING: "Autoverzekering",
     ETEN_VERS: "Vers eten",
+    ETEN_WERK: "Eten op werk",
     SUPERMARKT: "Supermarkt",
+    UIT_ETEN: "Uiteten",
+    TANKEN: "Tanken",
+    PARKEREN: "Parkeren",
 };

@@ -4,8 +4,7 @@ var fs = require('fs'),
     cleaning = require('./cleaning.js'),
     util = require('util'),
     categories = require('./categories.js'),
-    incasso = require('./incasso.js'),
-    terminals = require('./terminals.js')
+    simple = require('./simple.js')
     ;
 
 if (process.argv.length < 4) {
@@ -19,16 +18,13 @@ console.log('Parsing data');
 var data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
 cleaning.fixDates(data);
 
-var recognizers = [
-    new incasso(),
-    new terminals()
-];
+var recognizers = simple.patterns;
 var matched = 0;
 
 for (let trans of data.transactions) {
     var cat = categories.UNCLEAR;
     for (let rec of recognizers) {
-        cat = rec.detect(trans);
+        cat = rec.tryMatch(trans);
         if (!cat) {
             cat = categories.UNCLEAR;
         }

@@ -12,4 +12,7 @@ module.exports = {
     UIT_ETEN: "Uiteten",
     TANKEN: "Tanken",
     PARKEREN: "Parkeren",
+    DROGIST: "Drogist",
+    APOTHEEK: "Apotheek",
+    UITJES: "Uitjes",
 };

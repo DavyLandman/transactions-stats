@@ -1,6 +1,5 @@
-/* jshint node: true */
 "use strict";
-var fs = require('fs'),
+const fs = require('fs'),
     cleaning = require('./cleaning.js'),
     util = require('util'),
     categories = require('./categories.js'),
@@ -11,19 +10,24 @@ if (process.argv.length < 4) {
     console.log("Invalid arguments, call: node process.js <transactionsFile> <targetFile>");
     process.exit(0);
 }
-var transactionsFile = process.argv[2];
-var targetFile = process.argv[3];
+const transactionsFile = process.argv[2];
+const targetFile = process.argv[3];
+const shouldPrintUnmatched = false;
 
 console.log('Parsing data');
-var data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
+const data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
 cleaning.fixDates(data);
 
-var recognizers = simple.patterns;
-var matched = 0;
+const recognizers = 
+    simple.patterns.concat(
+        [ { 'tryMatch' : function(transaction) { if (shouldPrintUnmatched) { console.log('unmatched:'); console.log(transaction); } } } ]
+    )
+    ;
+let matched = 0;
 
-for (let trans of data.transactions) {
-    var cat = categories.UNCLEAR;
-    for (let rec of recognizers) {
+for (const trans of data.transactions) {
+    let cat = categories.UNCLEAR;
+    for (const rec of recognizers) {
         cat = rec.tryMatch(trans);
         if (!cat) {
             cat = categories.UNCLEAR;
@@ -33,12 +37,6 @@ for (let trans of data.transactions) {
             break;
         }
     }
-    /*
-    if (cat == categories.UNCLEAR) {
-        console.log(cat);
-        console.log(trans.details);
-    }
-    */
 }
 console.log('matched: ' + matched + '/' + data.transactions.length);
 

@@ -3,6 +3,7 @@ const categories = require('./categories.js');
 
 const patterns = [
     [/\/TLS BV INZ\. OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
+    [/\/NS GROEP IZ NS REIZIGERS/, categories.OPENBAAR_VERVOER],
     [/\/STICHTING BEWAARDER ACHM/, categories.HUUR_HUIS],
     [/\/XS4ALL INTERNET B\.V\./, categories.INTERNET],
     [/\/BROEKHUIS ASSURANTIE/, categories.AUTOVERZEKERING],
@@ -16,6 +17,8 @@ module.exports = class Incasso {
                     return cat;
                 }
             }
+            console.log('---- UNMATCHED INCASSO ----');
+            console.log(transaction);
         }
         return categories.UNCLEAR;
     }

@@ -18,13 +18,12 @@ console.log('Parsing data');
 var data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
 cleaning.fixDates(data);
 
-var recognizers = [incasso];
+var recognizers = [new incasso()];
 
-for (var t in data.transactions) {
-    var trans = data.transactions[t];
+for (let trans of data.transactions) {
     var cat = categories.UNCLEAR;
-    for (var r in recognizers) {
-        cat = recognizers[r].detect(trans);
+    for (let rec of recognizers) {
+        cat = rec.detect(trans);
         if (!cat) {
             cat = categories.UNCLEAR;
         }
@@ -32,10 +31,12 @@ for (var t in data.transactions) {
             break;
         }
     }
+    /*
     if (cat != categories.UNCLEAR) {
         console.log(cat);
         console.log(trans.details);
     }
+    */
 }
 
 //console.log(util.inspect(data, { depth: null}));

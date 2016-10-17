@@ -1,20 +1,19 @@
-/* jshint node: true */
 "use strict";
-var categories = require('./categories.js');
+const categories = require('./categories.js');
 
-var patterns = [
+const patterns = [
     [/\/TLS BV INZ\. OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
     [/\/STICHTING BEWAARDER ACHM/, categories.HUUR_HUIS],
     [/\/XS4ALL INTERNET B\.V\./, categories.INTERNET],
     [/\/BROEKHUIS ASSURANTIE/, categories.AUTOVERZEKERING],
 ];
-module.exports = {
-    detect : function(transaction) {
-        var details = transaction.details;
+module.exports = class Incasso {
+    detect(transaction) {
+        let details = transaction.details;
         if (/^\/TRTP\/SEPA INCASSO/.test(details)) {
-            for (var i in patterns) {
-                if (patterns[i][0].test(details)) {
-                    return patterns[i][1];
+            for (let [pat, cat] of patterns) {
+                if (pat.test(details)) {
+                    return cat;
                 }
             }
         }

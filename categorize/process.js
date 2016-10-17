@@ -19,6 +19,7 @@ var data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
 cleaning.fixDates(data);
 
 var recognizers = [new incasso()];
+var matched = 0;
 
 for (let trans of data.transactions) {
     var cat = categories.UNCLEAR;
@@ -28,6 +29,7 @@ for (let trans of data.transactions) {
             cat = categories.UNCLEAR;
         }
         if (cat != categories.UNCLEAR) {
+            matched += 1;
             break;
         }
     }
@@ -38,5 +40,6 @@ for (let trans of data.transactions) {
     }
     */
 }
+console.log('matched: ' + matched + '/' + data.transactions.length);
 
 //console.log(util.inspect(data, { depth: null}));

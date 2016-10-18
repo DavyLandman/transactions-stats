@@ -13,7 +13,7 @@ if (process.argv.length < 4) {
 }
 const transactionsFile = process.argv[2];
 const targetFile = process.argv[3];
-const shouldPrintUnmatched = true;
+const shouldPrintUnmatched = false;
 
 console.log('Parsing data');
 const data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));

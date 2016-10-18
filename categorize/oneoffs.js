@@ -18,6 +18,10 @@ const patterns = [
     [/[0-9] WESTHOFF HAARLEM/, categories.UIT_ETEN],
     [/[0-9] [0-9]+ [A-Z]+ STARBUC/, categories.UIT_ETEN],
 
+    [/DE KROON NIEUWEGEIN/, categories.TANKEN],
+
+    [/EIGENWIJS  S-GRAVE/, categories.HUIS],
+
 ];
 
 module.exports = {

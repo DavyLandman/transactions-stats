@@ -35,4 +35,7 @@ module.exports = {
     KAPPER: "Kapper",
     HUIS: "Huis",
     HOBBY: "Hobby",
+    CADEAU: "Cadeau",
+
+    UNKNOWN: "Onbekend",
 };

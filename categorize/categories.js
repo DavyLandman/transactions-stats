@@ -15,4 +15,9 @@ module.exports = {
     DROGIST: "Drogist",
     APOTHEEK: "Apotheek",
     UITJES: "Uitjes",
+    ALIEXPRESS: "AliExpress",
+    BABY: "Baby",
+    KLEDING: "Kleding",
+    OVERBOEKING_FAMILIE: "Overboeking Familie",
+    OVERBOEKING_INTERN: "Overboeking intern",
 };

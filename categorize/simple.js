@@ -17,9 +17,11 @@ class CategoryMatcher {
                     return cat;
                 }
             }
+                /*
             console.log('---- unmatched ' + this.name + ' ---');
             console.log(transaction.details);
             console.log(transaction);
+            */
         }
         return categories.UNCLEAR;
     }
@@ -57,6 +59,16 @@ module.exports = {
             [/\/XS4ALL INTERNET B\.V\./, categories.INTERNET],
 
             [/\/BROEKHUIS ASSURANTIE/, categories.AUTOVERZEKERING],
+        ]),
+        new CategoryMatcher("Overboeking", /\/TRTP\/SEPA OVERBOEKING/, [
+            [/SOCIALE VERZEKERINGSBANK/, categories.BABY],
+            [/M M J LANDMAN/, categories.OVERBOEKING_FAMILIE],
+        ]),
+        new CategoryMatcher("iDEAL", /^\/TRTP\/IDEAL/, [
+            [/INZAKE ALIPAY SINGAPORE/, categories.ALIEXPRESS],
+            [/HEMA BV/, categories.BABY],
+            [/ESPRIT BV/, categories.KLEDING],
+            [/THE STING/, categories.KLEDING],
         ])
     ]
 };

@@ -3,7 +3,8 @@ const fs = require('fs'),
     cleaning = require('./cleaning.js'),
     util = require('util'),
     categories = require('./categories.js'),
-    simple = require('./simple.js')
+    simple = require('./simple.js'),
+    oneoffs = require('./oneoffs.js')
     ;
 
 if (process.argv.length < 4) {
@@ -12,15 +13,27 @@ if (process.argv.length < 4) {
 }
 const transactionsFile = process.argv[2];
 const targetFile = process.argv[3];
-const shouldPrintUnmatched = false;
+const shouldPrintUnmatched = true;
 
 console.log('Parsing data');
 const data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));
 cleaning.fixDates(data);
 
+const printLeftOvers = {
+    'tryMatch' : function(transaction) { 
+        if (shouldPrintUnmatched) { 
+            console.log('unmatched:'); 
+            console.log(transaction);
+        } 
+        return categories.UNCLEAR;
+    }
+};
+
 const recognizers = 
     simple.patterns.concat(
-        [ { 'tryMatch' : function(transaction) { if (shouldPrintUnmatched) { console.log('unmatched:'); console.log(transaction); } } } ]
+        oneoffs
+    ).concat(
+        printLeftOvers
     )
     ;
 let matched = 0;

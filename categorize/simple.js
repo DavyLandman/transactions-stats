@@ -22,7 +22,7 @@ class CategoryMatcher {
             if (this.printMismatch && oneoffs.tryMatch(transaction) == categories.UNCLEAR) {
                 console.log('---- unmatched ' + this.name + ' ---');
                 console.log(transaction.details);
-                console.log(transaction);
+                //console.log(transaction);
             }
         }
         return categories.UNCLEAR;
@@ -142,23 +142,23 @@ module.exports = {
             [/[0-9] UNIVERSUM AMSTERDAM/, categories.SPORT],
             [/[0-9] PINDIRECT [A-Z]+[0-9]+/, categories.UNKNOWN],
         ], true),
-        new CategoryMatcher("Incasso", /^\/TRTP\/SEPA INCASSO/, [
-            [/\/TLS BV INZ\. OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
-            [/\/NS GROEP IZ NS REIZIGERS/, categories.OPENBAAR_VERVOER],
+        new CategoryMatcher("Incasso", /SEPA INCASSO/, [
+            [/TLS BV INZ\. OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
+            [/NS GROEP IZ NS REIZIGERS/, categories.OPENBAAR_VERVOER],
 
-            [/\/STICHTING BEWAARDER ACHM/, categories.HUUR_HUIS],
-            [/\/XS4ALL INTERNET B\.V\./, categories.INTERNET],
-            [/\/YOUFONE NEDERLAND BV/, categories.MOBIEL],
-            [/\/GEMEENTE ALMERE/, categories.BELASTING_GEMEENTE],
-            [/\/NUON KLANTENSERVICE/, categories.ENERGIE],
-            [/\/GBLT INCASSO/, categories.WATER],
-            [/\/VITENS/, categories.WATER],
+            [/STICHTING BEWAARDER ACHM/, categories.HUUR_HUIS],
+            [/XS4ALL INTERNET B\.V\./, categories.INTERNET],
+            [/YOUFONE NEDERLAND BV/, categories.MOBIEL],
+            [/GEMEENTE ALMERE/, categories.BELASTING_GEMEENTE],
+            [/NUON KLANTENSERVICE/, categories.ENERGIE],
+            [/GBLT INCASSO/, categories.WATER],
+            [/VITENS/, categories.WATER],
 
-            [/\/BROEKHUIS ASSURANTIE/, categories.AUTOVERZEKERING],
-            [/\/KIEMER/, categories.ZORGVERZEKERING],
-            [/\/ANWB VERZEKEREN/, categories.REISVERZEKERING],
+            [/BROEKHUIS ASSURANTIE/, categories.AUTOVERZEKERING],
+            [/KIEMER/, categories.ZORGVERZEKERING],
+            [/ANWB VERZEKEREN/, categories.REISVERZEKERING],
 
-            [/\/BELASTINGDIENST[\s\S]*[0-9]+-[A-Z]+-[0-9]+/, categories.WEGENBELASTING],
+            [/BELASTINGDIENST[\s\S]*[0-9A-Z]+-[0-9A-Z]+-[0-9A-Z]+/, categories.WEGENBELASTING],
 
             [/\/CHILD CARE KINDEROPVANG BV/, categories.OPVANG],
 
@@ -178,8 +178,8 @@ module.exports = {
             [/CHILD CARE KINDEROPVANG/, categories.OPVANG],
             [/APOTHEEK /, categories.APOTHEEK],
         ], true),
-        new CategoryMatcher("iDEAL", /^\/TRTP\/IDEAL/, [
-            [/INZAKE ALIPAY SINGAPORE/, categories.ALIEXPRESS],
+        new CategoryMatcher("iDEAL", /^(\/TRTP\/IDEAL|SEPA IDEAL)/, [
+            [/ALIPAY SINGAPORE/, categories.ALIEXPRESS],
             [/HEMA BV/, categories.BABY],
             [/BABY EN BORST BV/, categories.BABY],
             [/INTERTOYS/, categories.BABY],
@@ -188,6 +188,18 @@ module.exports = {
             [/BOL\.COM/, categories.SUPERMARKT],
             [/DE GROENE VROUW/, categories.HOBBY],
             [/WEBPRINT/, categories.HUIS],
-        ], true)
+            [/ OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
+            [/NS GROEP IZ NS REIZIGERS/, categories.OPENBAAR_VERVOER],
+            [/WEHKAMP FINANCE/, categories.HUIS],
+            [/DROGINET/, categories.DROGIST],
+            [/KRUIDVAT/, categories.DROGIST],
+            [/CUTE COTTON/, categories.HOBBY],
+            [/ECHTSTUDIO/, categories.HOBBY],
+            [/CAMERANU\.NL/, categories.CADEAU],
+            [/ZALANDO NL/, categories.KLEDING],
+        ], true),
+        new CategoryMatcher("Acceptgiro", /ACCEPTGIROBETALING/, [
+
+        ], false)
     ]
 };

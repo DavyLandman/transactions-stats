@@ -23,7 +23,7 @@ const printLeftOvers = {
     'tryMatch' : function(transaction) { 
         if (shouldPrintUnmatched) { 
             console.log('unmatched:'); 
-            console.log(transaction);
+            console.log(transaction.details);
         } 
         return categories.UNCLEAR;
     }

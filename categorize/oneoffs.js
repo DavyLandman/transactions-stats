@@ -3,7 +3,6 @@
 const categories = require('./categories.js');
 
 const patterns = [
-    [/IDEAL[\s\S]*MOEDERMELK/m, categories.BABY],
 
     [/^STORTING/, categories.OVERBOEKING_INTERN],
     [/[0-9] CCV\*ALMERE GSM ALMERE/, categories.MOBIEL],
@@ -26,7 +25,13 @@ const patterns = [
 
     [/EIGENWIJS  S-GRAVE/, categories.HUIS],
     [/TIM EN JULIA DESIGN/, categories.KLEDING],
+    [/IDEAL[\s\S]*MOEDERMELK/m, categories.BABY],
     [/BOOBS- N-BURPS/, categories.BABY],
+    [/VERZAMELAARSMARKT/, categories.BABY],
+    [/MAMABAND/, categories.KLEDING],
+    [/MAMALOES \& KIDS/, categories.KLEDING],
+    [/TASK RETAIL BV/, categories.KLEDING],
+    [/ELKA PHOTO FINISHING/, categories.BABY], // baby kaartje
 
     [/CCV\*HANDELSOND VAN DER Z/, categories.UNKNOWN],
     [/BLAAS EN STRANG BEHEER N/, categories.UNKNOWN],
@@ -34,7 +39,8 @@ const patterns = [
 
 module.exports = {
     'tryMatch': function(transaction) {
-        let details = transaction.details;
+        let details = transaction.details.replace(/(?:\r\n|\r|\n)/g,'');
+
         for (let [pat, cat] of patterns) {
             if (pat.test(details)) {
                 return cat;

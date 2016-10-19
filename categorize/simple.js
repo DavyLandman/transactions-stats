@@ -22,7 +22,7 @@ class CategoryMatcher {
             if (this.printMismatch && oneoffs.tryMatch(transaction) == categories.UNCLEAR) {
                 console.log('---- unmatched ' + this.name + ' ---');
                 console.log(transaction.details);
-                //console.log(transaction);
+                console.log(transaction);
             }
         }
         return categories.UNCLEAR;
@@ -82,12 +82,14 @@ module.exports = {
             [/ SHELL /, categories.TANKEN],
             [/ BP EXPRESS /, categories.TANKEN],
             [/ TAMOIL /, categories.TANKEN],
-            [/  AUTORADAM /, categories.TANKEN],
+            [/ AUTORADAM /, categories.TANKEN],
 
             [/HOSPITAALGARAGE/, categories.PARKEREN],
             [/SCHIPPERGARAGE AL/, categories.PARKEREN],
             [/ PARKING/, categories.PARKEREN],
             [/ P6 UITGAANSCENTRUM /, categories.PARKEREN],
+            [/ UMC UTRECHT UTRECHT/, categories.PARKEREN],
+            [/ MERCURE HOTEL AMER/, categories.PARKEREN],
 
             [/WASSTRAAT/, categories.WASSTRAAT],
 
@@ -110,6 +112,7 @@ module.exports = {
             [/[0-9] CCV\*IJSPRESSI/, categories.UIT_ETEN],
             [/[0-9] TANTE TRUUS /, categories.UIT_ETEN],
             [/[0-9] PARNASSIA AAN ZEE/, categories.UIT_ETEN],
+            [/[0-9] GRANDFETARIA/, categories.UIT_ETEN],
             [/LUNCHTIJD /, categories.UIT_ETEN],
             [/BAKKER BORSCH /, categories.UIT_ETEN],
             [/DE VELDKEUKEN /, categories.UIT_ETEN],
@@ -127,12 +130,13 @@ module.exports = {
             [/DAILY STYLE, ALMERE/, categories.HUIS],
 
             [/RIAS STYLE/, categories.HOBBY],
-            [/ BRUNA [A-Z]+/, categories.HOBBY],
+            [/ BRUNA[ .][A-Z]+/, categories.HOBBY],
             [/ JENNY S TABAKSWINKEL /, categories.HOBBY],
             [/ BEVER /, categories.HOBBY],
 
             [/ STUMPEL /, categories.CADEAU],
             [/ BLOEMEN /, categories.CADEAU],
+            [/JENIFFERSBLOEMEN/, categories.CADEAU],
 
             [/[0-9] SPORTEXPL/, categories.SPORT],
             [/[0-9] UNIVERSUM AMSTERDAM/, categories.SPORT],
@@ -163,12 +167,27 @@ module.exports = {
         new CategoryMatcher("Overboeking", /\/TRTP\/SEPA OVERBOEKING/, [
             [/SOCIALE VERZEKERINGSBANK/, categories.BABY],
             [/M M J LANDMAN/, categories.OVERBOEKING_FAMILIE],
-        ], false),
+            [/ZAKGELD/, categories.OVERBOEKING_INTERN],
+            [/REMI\/SPAREN/, categories.OVERBOEKING_INTERN],
+            [/[0-9]+9364\/[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
+            [/ST CENTR WISK INFORM[\s\S]*SALARIS/, categories.SALARIS],
+            [/NED VER VOOR ONCOLOGIE/, categories.WERK],
+            [/ANTONI VAN LEEUWENHOEK ZIEKENHUIS[\s\S]*SALARIS/, categories.SALARIS],
+            [/ESPRIT RETAIL B\.V\./, categories.KLEDING],
+            [/BOL.COM/, categories.SUPERMARKT],
+            [/CHILD CARE KINDEROPVANG/, categories.OPVANG],
+            [/APOTHEEK /, categories.APOTHEEK],
+        ], true),
         new CategoryMatcher("iDEAL", /^\/TRTP\/IDEAL/, [
             [/INZAKE ALIPAY SINGAPORE/, categories.ALIEXPRESS],
             [/HEMA BV/, categories.BABY],
+            [/BABY EN BORST BV/, categories.BABY],
+            [/INTERTOYS/, categories.BABY],
             [/ESPRIT RET/, categories.KLEDING],
             [/THE STING/, categories.KLEDING],
-        ], false)
+            [/BOL\.COM/, categories.SUPERMARKT],
+            [/DE GROENE VROUW/, categories.HOBBY],
+            [/WEBPRINT/, categories.HUIS],
+        ], true)
     ]
 };

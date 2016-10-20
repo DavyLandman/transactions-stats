@@ -5,7 +5,7 @@ module.exports = {
     OPENBAAR_VERVOER: "Openbaar Vervoer",
     HUUR_HUIS: "Huur Huis",
     INTERNET: "XS4All Internet",
-    Mobiel: "Mobiel abonnement",
+    MOBIEL: "Mobiel abonnement",
     AUTOVERZEKERING: "Autoverzekering",
     ETEN_VERS: "Vers eten",
     ETEN_WERK: "Eten op werk",
@@ -38,6 +38,8 @@ module.exports = {
     CADEAU: "Cadeau",
     SALARIS: "Salaris",
     WERK: "Werk",
+    BELASTINGDIENST: "Belastingdienst",
+    TANDARTS: "Tandarts",
 
     UNKNOWN: "Onbekend",
 };

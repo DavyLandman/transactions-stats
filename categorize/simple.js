@@ -15,6 +15,9 @@ class CategoryMatcher {
         let details = transaction.details;
         if (this.mainPattern.test(details)) {
             for (let [pat, cat] of this.patterns) {
+                if (!cat) {
+                    console.log(pat + " has incorrect category");
+                }
                 if (pat.test(details)) {
                     return cat;
                 }
@@ -199,7 +202,9 @@ module.exports = {
             [/ZALANDO NL/, categories.KLEDING],
         ], true),
         new CategoryMatcher("Acceptgiro", /ACCEPTGIROBETALING/, [
+            [/BELASTINGDIENST/, categories.BELASTINGDIENST],
+            [/FAMED BV/, categories.TANDARTS],
 
-        ], false)
+        ], true)
     ]
 };

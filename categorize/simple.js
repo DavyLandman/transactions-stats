@@ -166,13 +166,13 @@ module.exports = {
 
             [/\/MARIT VAN OOSTVEEN MOM I/, categories.SPORT],
         ], true),
-        new CategoryMatcher("Overboeking", /(\/TRTP\/SEPA OVERBOEKING|^SEPA OVERBOEKING)/, [
+        new CategoryMatcher("Overboeking", /(\/TRTP\/SEPA OVERBOEKING|^SEPA [A-Z ]*OVERB[A-Z]*)/, [
             [/SOCIALE VERZEKERINGSBANK/, categories.BABY],
             [/M M J LANDMAN/, categories.OVERBOEKING_FAMILIE],
             [/ L LANDMAN/, categories.OVERBOEKING_FAMILIE],
             [/MW LM VAN HOUDT/, categories.OVERBOEKING_FAMILIE],
             [/ZAKGELD/, categories.OVERBOEKING_INTERN],
-            [/REMI\/SPAREN/, categories.OVERBOEKING_INTERN],
+            [/(REMI\/SPAREN|OMSCHRIJVING: SPAREN)/, categories.OVERBOEKING_INTERN],
             [/[0-9]+9364[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
             [/[0-9]+9474[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
             [/ST CENTR WISK INFORM[\s\S]*SALARIS/, categories.SALARIS],
@@ -209,7 +209,6 @@ module.exports = {
         new CategoryMatcher("Acceptgiro", /ACCEPTGIROBETALING/, [
             [/BELASTINGDIENST/, categories.BELASTINGDIENST],
             [/FAMED BV/, categories.TANDARTS],
-
-        ], true)
+        ], true),
     ]
 };

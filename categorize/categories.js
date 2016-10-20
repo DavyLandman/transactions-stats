@@ -41,6 +41,8 @@ module.exports = {
     BELASTINGDIENST: "Belastingdienst",
     TANDARTS: "Tandarts",
     AUTO: "Auto",
+    BANK: "Bank",
+    VERZEKERING: "Verzekeringen",
 
     UNKNOWN: "Onbekend",
 };

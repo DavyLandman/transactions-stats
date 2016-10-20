@@ -32,6 +32,7 @@ const patterns = [
     [/MAMALOES \& KIDS/, categories.KLEDING],
     [/TASK RETAIL BV/, categories.KLEDING],
     [/BUCKAROO.*SHOPNL00104737/,categories.KLEDING],
+    [/08 STADHUISPLEIN [0-9]+ ALMERE/, categories.KLEDING],
     [/ELKA PHOTO FINISHING/, categories.BABY], // baby kaartje
     [/BABYCARE KRAAMZORG/, categories.BABY],
 
@@ -39,6 +40,8 @@ const patterns = [
     [/BROEKHUIS HARDERWIJK[\s\S]*9731/, categories.AUTO],
     [/INDEPENDER.NL SERVICESBV[\s\S]*COOL EDITION/, categories.AUTOVERZEKERING],
     [/ANWB CONTRIBUTIE/, categories.AUTOVERZEKERING],
+    [/ABN AMRO BANK .* BETAALGEMAK/, categories.BANK],
+    [/PAKKETVERZ\. POLISNR\. [ 0-9]+MAANDPREMIE/, categories.VERZEKERING],
 
     [/CCV\*HANDELSOND VAN DER Z/, categories.UNKNOWN],
     [/BLAAS EN STRANG BEHEER N/, categories.UNKNOWN],

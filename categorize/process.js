@@ -7,7 +7,7 @@ const fs = require('fs'),
     oneoffs = require('./oneoffs.js')
     ;
 
-const shouldPrintUnmatched = false;
+const shouldPrintUnmatched = true;
 if (process.argv.length < 4) {
     console.log("Invalid arguments, call: node process.js <transactionsFile> <targetFile>");
     process.exit(0);

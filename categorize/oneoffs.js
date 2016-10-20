@@ -31,12 +31,14 @@ const patterns = [
     [/MAMABAND/, categories.KLEDING],
     [/MAMALOES \& KIDS/, categories.KLEDING],
     [/TASK RETAIL BV/, categories.KLEDING],
+    [/BUCKAROO.*SHOPNL00104737/,categories.KLEDING],
     [/ELKA PHOTO FINISHING/, categories.BABY], // baby kaartje
     [/BABYCARE KRAAMZORG/, categories.BABY],
 
     [/INZ\. OV-CHIPKAART/, categories.OPENBAAR_VERVOER],
     [/BROEKHUIS HARDERWIJK[\s\S]*9731/, categories.AUTO],
     [/INDEPENDER.NL SERVICESBV[\s\S]*COOL EDITION/, categories.AUTOVERZEKERING],
+    [/ANWB CONTRIBUTIE/, categories.AUTOVERZEKERING],
 
     [/CCV\*HANDELSOND VAN DER Z/, categories.UNKNOWN],
     [/BLAAS EN STRANG BEHEER N/, categories.UNKNOWN],

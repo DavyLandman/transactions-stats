@@ -25,7 +25,6 @@ class CategoryMatcher {
             if (this.printMismatch && oneoffs.tryMatch(transaction) == categories.UNCLEAR) {
                 console.log('---- unmatched ' + this.name + ' ---');
                 console.log(transaction.details);
-                console.log(transaction);
             }
         }
         return categories.UNCLEAR;

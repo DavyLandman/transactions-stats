@@ -40,6 +40,7 @@ module.exports = {
     WERK: "Werk",
     BELASTINGDIENST: "Belastingdienst",
     TANDARTS: "Tandarts",
+    AUTO: "Auto",
 
     UNKNOWN: "Onbekend",
 };

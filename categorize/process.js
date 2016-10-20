@@ -7,13 +7,13 @@ const fs = require('fs'),
     oneoffs = require('./oneoffs.js')
     ;
 
+const shouldPrintUnmatched = false;
 if (process.argv.length < 4) {
     console.log("Invalid arguments, call: node process.js <transactionsFile> <targetFile>");
     process.exit(0);
 }
 const transactionsFile = process.argv[2];
 const targetFile = process.argv[3];
-const shouldPrintUnmatched = false;
 
 console.log('Parsing data');
 const data = JSON.parse(fs.readFileSync(transactionsFile, 'utf8'));

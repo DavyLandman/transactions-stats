@@ -25,7 +25,7 @@ class CategoryMatcher {
             if (this.printMismatch && oneoffs.tryMatch(transaction) == categories.UNCLEAR) {
                 console.log('---- unmatched ' + this.name + ' ---');
                 console.log(transaction.details);
-                //console.log(transaction);
+                console.log(transaction);
             }
         }
         return categories.UNCLEAR;
@@ -167,21 +167,27 @@ module.exports = {
 
             [/\/MARIT VAN OOSTVEEN MOM I/, categories.SPORT],
         ], true),
-        new CategoryMatcher("Overboeking", /\/TRTP\/SEPA OVERBOEKING/, [
+        new CategoryMatcher("Overboeking", /(\/TRTP\/SEPA OVERBOEKING|^SEPA OVERBOEKING)/, [
             [/SOCIALE VERZEKERINGSBANK/, categories.BABY],
             [/M M J LANDMAN/, categories.OVERBOEKING_FAMILIE],
+            [/ L LANDMAN/, categories.OVERBOEKING_FAMILIE],
+            [/MW LM VAN HOUDT/, categories.OVERBOEKING_FAMILIE],
             [/ZAKGELD/, categories.OVERBOEKING_INTERN],
             [/REMI\/SPAREN/, categories.OVERBOEKING_INTERN],
-            [/[0-9]+9364\/[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
+            [/[0-9]+9364[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
+            [/[0-9]+9474[\s\S]*DAVY LANDMAN/, categories.OVERBOEKING_INTERN],
             [/ST CENTR WISK INFORM[\s\S]*SALARIS/, categories.SALARIS],
+            [/STICHTING ANTONI VAN LEEUW/, categories.SALARIS],
             [/NED VER VOOR ONCOLOGIE/, categories.WERK],
             [/ANTONI VAN LEEUWENHOEK ZIEKENHUIS[\s\S]*SALARIS/, categories.SALARIS],
             [/ESPRIT RETAIL B\.V\./, categories.KLEDING],
             [/BOL.COM/, categories.SUPERMARKT],
             [/CHILD CARE KINDEROPVANG/, categories.OPVANG],
             [/APOTHEEK /, categories.APOTHEEK],
+            [/KIEMER/, categories.ZORGVERZEKERING],
+            [/ KADO /, categories.CADEAU],
         ], true),
-        new CategoryMatcher("iDEAL", /^(\/TRTP\/IDEAL|SEPA IDEAL)/, [
+        new CategoryMatcher("iDEAL", /(\/TRTP\/IDEAL|^SEPA IDEAL)/, [
             [/ALIPAY SINGAPORE/, categories.ALIEXPRESS],
             [/HEMA BV/, categories.BABY],
             [/BABY EN BORST BV/, categories.BABY],

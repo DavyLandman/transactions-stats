@@ -56,7 +56,7 @@ for (const trans of data.transactions) {
                 'amount' : trans.amount.amount,
                 'category': cat,
                 'week': trans.date.getWeek(),
-                'month': trans.date.getMonth(),
+                'month': trans.date.getMonth() + 1,
                 'year': trans.date.getFullYear(),
             }]);
             break;

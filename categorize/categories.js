@@ -35,7 +35,7 @@ module.exports = {
     OPVANG: new Category("Vaste lasten", "Kinderopvang", true),
     ENERGIE: new Category("Vaste lasten", "Energie", true),
     WATER: new Category("Vaste lasten", "Water", true),
-    BELASTINGDIENST: new Category("Vaste lasten", "Belastingdienst", true),
+    BELASTINGDIENST: new Category("Vaste lasten", "Belastingdienst", false),
     BANK: new Category("Vaste lasten", "Bank", true),
     VERZEKERING: new Category("Vaste lasten", "Verzekeringen", true),
 

@@ -68,11 +68,9 @@ if (matched == data.transactions.length) {
     console.log('Saving results');
     let target = fs.createWriteStream(targetFile, {encoding:'utf8'});
     try {
-        target.write('category,week,month,year,amount\n', 'utf8');
+        target.write('main category,sub category,week,month,year,amount\n', 'utf8');
         for (const res of results) {
-            if (!target.write(res.category + ',' + res.week +','+res.month +','+res.year+',' + res.amount+'\n', 'utf8')) {
-                target.drain();
-            }
+            target.write(res.category.base + ',' + res.category.name + ',' + res.week +','+(res.category.monthly? res.month : 0) +','+res.year+',' + res.amount+'\n', 'utf8');
         }
     }
     finally {

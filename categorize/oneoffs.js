@@ -18,12 +18,12 @@ const patterns = [
     [/[0-9] RAPA NUI Z/, categories.UIT_ETEN],
     [/[0-9] WESTHOFF HAARLEM/, categories.UIT_ETEN],
     [/[0-9] [0-9]+ [A-Z]+ STARBUC/, categories.UIT_ETEN],
+    [/EIGENWIJS  S-GRAVE/, categories.UITETEN], // ijszaak bij wijk aan zee
 
     [/DE KROON NIEUWEGEIN/, categories.TANKEN],
     [/ AMIGO AMERSFOORT/, categories.TANKEN],
     [/CCV\*MERCURE HOTEL AMER/, categories.PARKEREN],
 
-    [/EIGENWIJS  S-GRAVE/, categories.HUIS],
     [/TIM EN JULIA DESIGN/, categories.KLEDING],
     [/IDEAL[\s\S]*MOEDERMELK/m, categories.BABY],
     [/BOOBS- N-BURPS/, categories.BABY],
